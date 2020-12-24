@@ -4,4 +4,5 @@
 (add-to-list 'load-path "~/.emacs.d/lisp")
 ;;插件包管理
 (require 'init-packages)
-
+;;Scheme配置
+(require 'init-scheme)
