@@ -1,0 +1,107 @@
+;; cl - Common Lisp Extension
+(require 'cl)
+
+;; Add Packages
+(defvar my/packages '(
+		      ;; --- Auto-completion ---
+		      company
+		      ;; --- Better Editor ---
+		      hungry-delete
+		      swiper
+		      counsel
+		      smartparens
+		      ;; --- Major Mode ---
+		      js2-mode
+		      ;; --- Minor Mode ---
+		      nodejs-repl
+		      exec-path-from-shell
+		      ;; --- Themes ---
+		      monokai-theme
+		      ;; solarized-theme
+		      ) "Default packages")
+
+(setq package-selected-packages my/packages)
+
+(defun my/packages-installed-p ()
+  (loop for pkg in my/packages
+	when (not (package-installed-p pkg)) do (return nil)
+	finally (return t)))
+
+(unless (my/packages-installed-p)
+  (message "%s" "Refreshing package database...")
+  (package-refresh-contents)
+  (dolist (pkg my/packages)
+    (when (not (package-installed-p pkg))
+      (package-install pkg))))
+
+;; Find Executable Path on OS X
+(when (memq window-system '(mac ns))
+     (exec-path-from-shell-initialize))
+
+;;org-mode
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
+(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+(add-hook 'org-mode-hook 'turn-on-font-lock) ; not needed when global-font-lock-mode is on
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
+
+;;编辑器配置信息
+;;关闭工具栏,tool-bar-mode
+;;(tool-bar-mode -1)
+;;关闭文件滑动控件
+;;(scroll-bar-mode -1)
+;;显示行号
+(global-linum-mode 1)
+;;更改光标的样式
+;;(setq cursor-type 'bar)
+(setq-default cursor-type 'bar)
+;;关闭启动帮助画面
+;;(setq inhibit-splash-screen 1)
+;;关闭缩进
+;;(electric-indent-mode -1)
+;;更改显示字体大小 16pt
+(set-face-attribute 'default nil :height 160)
+;;快速打开配置文件
+(defun open-init-file()
+  (interactive)
+  (find-file "~/.emacs.d/init.el"))
+;;绑定函数到快捷键
+(global-set-key (kbd "<f7>") 'open-init-file)
+
+;;开启全局Company补全
+;;(global-company-mode 1)
+
+;;禁止生成备份文件
+(setq make-backup-files nil)
+
+;;设置最近编辑过的文件
+(require 'recentf)
+(recentf-mode 1)
+(setq recentf-max-menu-item 10)
+
+;;选中一段文字后输入字符替代选中的文字
+(delete-selection-mode 1)
+
+;;开启默认全屏
+(setq initial-frame-alist (quote ((fullscreen . maximized))))
+
+;;自动括号匹配;钩子
+(add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
+
+;;高亮当前行
+(global-hl-line-mode 1)
+;;加载主题monokai
+(load-theme 'monokai 1)
+
+;;配置js2-mode
+(setq auto-mode-alist
+      (append
+       '(("\\.js\\'".js2-mode))
+       auto-mode-alist))
