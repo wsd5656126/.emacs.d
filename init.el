@@ -2,8 +2,7 @@
 ;;引入子模块
 (package-initialize)
 (add-to-list 'load-path "~/.emacs.d/lisp")
-;;
-插件包管理
+;;插件包管理
 (require 'init-packages)
 ;;Scheme配置
 (require 'init-scheme)
