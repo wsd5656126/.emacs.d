@@ -18,3 +18,4 @@
 (require 'init-better-defaults)
 
 
+(put 'dired-find-alternate-file 'disabled nil)
