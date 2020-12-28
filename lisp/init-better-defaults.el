@@ -8,7 +8,7 @@
 ;;关闭哔哔的提示音
 ;;(setq ring-bell-function 'ignore)
 ;;将yes改为y
-;;(fset 'yes-or-no-p 'y-or-n-p)
+(fset 'yes-or-no-p 'y-or-n-p)
 ;;代码缩进
 (defun indent-buffer()
   (interactive)
@@ -66,3 +66,23 @@
 (require 'dired-x)
 
 ;;设置org-mode
+
+;;设置不匹配'
+;;(sp-local-pair 'emacs-lisp mode "'" nil :actions nil)
+;;(sp-local-pair 'lisp-interaction-mode "'" nil :actions nil)
+;;合并上面两句 有问题
+;;(sp-local-pair '(emacs-lisp-mode lisp-interaction-mode) "'" nil :actions nil)
+
+;;光标在括号内时高亮
+(define-advice show-paren-function (:around (fn) fix-show-paren-function)
+  "Highlight enclosing parens."
+  (cond ((looking-at-p "\\s(") (funcall fn))
+	(t (save-excursion
+	     (ignore-errors (backward-up-list))
+	     (funcall fn)))))
+;;删除dos的换行符
+(defun remove-dos-eol ()
+  "Replace DOS eolns CR LF with Unix eolns CR"
+  (interactive)
+  (goto-char (point-min))
+  (while (search-forward "\r" nil t) (replace-match "")))

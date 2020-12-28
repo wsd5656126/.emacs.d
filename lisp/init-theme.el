@@ -1,5 +1,5 @@
 ;;开启全局Company补全
-;;(global-company-mode 1)
+(global-company-mode 1)
 
 ;;禁止生成备份文件
 (setq make-backup-files nil)

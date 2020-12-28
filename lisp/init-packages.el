@@ -1,6 +1,8 @@
 (when (>= emacs-major-version 24)
   (require 'package)
   (package-initialize)
+;;  (setq package-archives '(("gnu"   . "https://elpa.emacs-china.org/gnu/")
+;;			         ("melpa" . "https://elpa.emacs-china.org/melpa/"))))
   (setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
 			         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/"))))
 ;; cl - Common Lisp Extension
@@ -17,9 +19,14 @@
 		      smartparens
 		      ;; --- Major Mode ---
 		      js2-mode
+		      web-mode
 		      ;; --- Minor Mode ---
+		      evil
 		      nodejs-repl
 		      exec-path-from-shell
+		      js2-refactor
+		      expand-region
+		      evil-leader
 		      ;; --- Themes ---
 		      monokai-theme
 		      ;; solarized-theme
@@ -41,6 +48,12 @@
 
 ;; Find Executable Path on OS X
 (when (memq window-system '(mac ns))
-     (exec-path-from-shell-initialize))
+  (exec-path-from-shell-initialize))
+
+(setq auto-mode-alist
+      (append
+       '(("\\.js\\'" . js2-mode))
+       '(("\\.html\\'" . web-mode))
+              auto-mode-alist))
 ;;导出名称
 (provide 'init-packages)

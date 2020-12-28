@@ -5,7 +5,8 @@
 ;;关闭文件滑动控件
 ;;(scroll-bar-mode -1)
 ;;显示行号
-(global-linum-mode 1)
+(linum-mode 1)
+;;(linum-relative-global-mode 1)
 ;;更改光标的样式
 ;;(setq cursor-type 'bar)
 (setq-default cursor-type 'bar)
@@ -19,6 +20,10 @@
 (defun open-init-file()
   (interactive)
   (find-file "~/.emacs.d/init.el"))
+(defun load-init-file()
+  (interactive)
+  (load-file "~/.emacs.d/init.el"))
 ;;绑定函数到快捷键
 (global-set-key (kbd "<f7>") 'open-init-file)
+(global-set-key (kbd "<f8>") 'load-init-file)
 (provide 'init-editor)
