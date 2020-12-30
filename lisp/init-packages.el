@@ -4,7 +4,9 @@
 ;;  (setq package-archives '(("gnu"   . "https://elpa.emacs-china.org/gnu/")
 ;;			         ("melpa" . "https://elpa.emacs-china.org/melpa/"))))
   (setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-			         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/"))))
+			   ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+			   ("melpa-stable" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa-stable/")
+			   )))
 ;; cl - Common Lisp Extension
 (require 'cl)
 
