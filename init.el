@@ -22,8 +22,6 @@
 (require 'init-codelint)
 ;;evil
 (require 'init-evil)
-
-(put 'dired-find-alternate-file 'disabled nil)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -31,7 +29,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (js2-refactor web-mode company hungry-delete swiper counsel smartparens js2-mode nodejs-repl exec-path-from-shell monokai-theme))))
+    (## pyim company hungry-delete swiper counsel smartparens js2-mode web-mode evil nodejs-repl exec-path-from-shell js2-refactor expand-region evil-leader monokai-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

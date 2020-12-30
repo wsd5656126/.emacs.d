@@ -3,8 +3,8 @@
 ;;关闭自动保存文件
 ;;(setq auto-save-default nil)
 ;;使用popwin插件自动将光标移动到新创建的端口
-(require 'popwin)
-(popwin-mode 1)
+;;(require 'popwin)
+;;(popwin-mode 1)
 ;;关闭哔哔的提示音
 ;;(setq ring-bell-function 'ignore)
 ;;将yes改为y
@@ -48,8 +48,6 @@
 ;;绑定快捷键
 (global-set-key (kbd "s-/") 'hipple-expand)
 
-(provide 'init-better-defaults)
-
 ;;设置dired mode
 (setq dired-recursive-deletes 'always)
 (setq dired-recursive-copies 'always)
@@ -86,3 +84,7 @@
   (interactive)
   (goto-char (point-min))
   (while (search-forward "\r" nil t) (replace-match "")))
+;;设置日历的第一天是周一
+(setq calendar-week-start-day 1)
+
+(provide 'init-better-defaults)

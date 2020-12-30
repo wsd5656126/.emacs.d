@@ -9,7 +9,7 @@
 ;;(linum-relative-global-mode 1)
 ;;更改光标的样式
 ;;(setq cursor-type 'bar)
-(setq-default cursor-type 'bar)
+;;(setq-default cursor-type 'bar)
 ;;关闭启动帮助画面
 ;;(setq inhibit-splash-screen 1)
 ;;关闭缩进
