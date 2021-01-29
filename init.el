@@ -1,38 +1,62 @@
-;;相信的心就是你的魔法
-;;引入子模块
-(package-initialize)
-(add-to-list 'load-path "/root/.emacs.d/lisp")
-;;插件包管理
-(require 'init-packages)
-;;Scheme配置
-(require 'init-scheme)
-;;org配置
-(require 'init-org)
-;;编辑器配置
-(require 'init-editor)
-;;主题配置
-(require 'init-theme)
-;;js2mode
-(require 'init-js2mode)
-;;better-defaults
-(require 'init-better-defaults)
-;;web
-(require 'init-web)
-;;codelint
-(require 'init-codelint)
-;;evil
-(require 'init-evil)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (## pyim company hungry-delete swiper counsel smartparens js2-mode web-mode evil nodejs-repl exec-path-from-shell js2-refactor expand-region evil-leader monokai-theme))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+;;自动启用文本模式和自动换行模式
+(setq default-major-mode 'text-mode)
+(add-hook 'text-mode-hook 'turn-on-autofill)
+;;自动启用临时标记模式
+(setq-default transient-mark-mode 1)
+;;解决流控制问题
+;;(enable-flow-control)
+;;重新绑定键盘按键
+(global-unset-key "\e\e")
+(global-unset-key "\C-x\C-u")
+;;要求精确匹配
+;;(setq-default case-fold-search nil)
+;;替换时不改变大小写情况
+;;(setq-default case-replace nil)
+;;单词缩写
+(setq-default abbrev-mode t)
+(xterm-mouse-mode 1)
+(read-abbrev-file "~/.emacs.d/abbrev_defs")
+(setq save-abbrevs t)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
