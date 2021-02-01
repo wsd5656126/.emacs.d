@@ -1,6 +1,6 @@
 ;;自动启用文本模式和自动换行模式
 (setq default-major-mode 'text-mode)
-(add-hook 'text-mode-hook 'turn-on-autofill)
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
 ;;自动启用临时标记模式
 (setq-default transient-mark-mode 1)
 ;;解决流控制问题
